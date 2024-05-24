@@ -13,6 +13,11 @@ if (!fs.existsSync(targetDir)) {
 
 function cleanHtmlAttributes(htmlContent) {
   const $ = cheerio.load(htmlContent);
+
+  // Remove div with id="preloader"
+  $('#preloader').remove();
+  $('.social').remove();
+
   $('*').each(function () {
     $(this).removeAttr('srcset');
     $(this).removeAttr('style');
@@ -22,6 +27,26 @@ function cleanHtmlAttributes(htmlContent) {
     $(this).removeAttr('role');
     $(this).removeAttr('aria-label');
     $(this).removeAttr('data-w-id');
+    $(this).removeAttr('data-aos');
+    $(this).removeAttr('data-aos-delay');
+    $(this).removeAttr('data-aos-duration');
+    $(this).removeAttr('data-aos-easing');
+    $(this).removeAttr('data-aos-once');
+    $(this).removeAttr('data-aos-anchor-placement');
+
+    const classes = $(this).attr('class');
+    if (classes) {
+      const newClasses = classes
+        .split(/\s+/)
+        .filter(cls => !cls.startsWith('aos-'))
+        .join(' ');
+      if (newClasses) {
+        $(this).attr('class', newClasses);
+      } else {
+        $(this).removeAttr('class');
+      }
+    }
+
     if ($(this).attr('alt')) {
       $(this).attr('alt', 'image');
     }
@@ -33,6 +58,7 @@ function cleanHtmlAttributes(htmlContent) {
     $('[data-wf-cart-type="rightSidebar"]').remove();
     $('script').remove();
   });
+
   return $.html();
 }
 
@@ -50,7 +76,8 @@ function processFile(filePath, targetPath) {
   } else if (filePath.endsWith('.css')) {
     modifiedContent = cleanCssContent(fileContent);
   } else {
-    modifiedContent = fileContent;
+    fs.copyFileSync(filePath, targetPath);
+    return;
   }
   fs.writeFileSync(targetPath, modifiedContent);
 }

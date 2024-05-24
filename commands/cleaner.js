@@ -62,10 +62,23 @@ function cleanHtmlAttributes(htmlContent) {
   return $.html();
 }
 
+function removeComments(content) {
+  // Remove single-line comments
+  content = content.replace(/\/\/.*$/gm, '');
+  // Remove multi-line comments
+  content = content.replace(/\/\*[\s\S]*?\*\//g, '');
+  return content;
+}
+
 function cleanCssContent(cssContent) {
+  cssContent = removeComments(cssContent);
   cssContent = cssContent.replace(/@font-face\s*{[^}]*}/g, '');
   cssContent = cssContent.replace(/font-family:[^;]+;/g, '');
   return cssContent;
+}
+
+function cleanJsContent(jsContent) {
+  return removeComments(jsContent);
 }
 
 function processFile(filePath, targetPath) {
@@ -75,6 +88,8 @@ function processFile(filePath, targetPath) {
     modifiedContent = cleanHtmlAttributes(fileContent);
   } else if (filePath.endsWith('.css')) {
     modifiedContent = cleanCssContent(fileContent);
+  } else if (filePath.endsWith('.js')) {
+    modifiedContent = cleanJsContent(fileContent);
   } else {
     fs.copyFileSync(filePath, targetPath);
     return;

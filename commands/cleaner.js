@@ -56,7 +56,7 @@ function cleanHtmlAttributes(htmlContent) {
     $('[data-node-type="commerce-cart-wrapper"]').remove();
     $('[data-open-product=""]').remove();
     $('[data-wf-cart-type="rightSidebar"]').remove();
-    $('script').remove();
+    // $('script').remove();
   });
 
   return $.html();

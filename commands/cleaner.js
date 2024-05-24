@@ -42,26 +42,33 @@ function cleanCssContent(cssContent) {
   return cssContent;
 }
 
-function processFile(filePath) {
+function processFile(filePath, targetPath) {
   const fileContent = fs.readFileSync(filePath, 'utf8');
+  let modifiedContent;
   if (filePath.endsWith('.html')) {
-    return cleanHtmlAttributes(fileContent);
+    modifiedContent = cleanHtmlAttributes(fileContent);
   } else if (filePath.endsWith('.css')) {
-    return cleanCssContent(fileContent);
+    modifiedContent = cleanCssContent(fileContent);
+  } else {
+    modifiedContent = fileContent;
   }
-  return fileContent;
+  fs.writeFileSync(targetPath, modifiedContent);
 }
 
-function processDirectory(directory) {
-  fs.readdirSync(directory).forEach(file => {
-    const fullPath = path.join(directory, file);
-    const stat = fs.statSync(fullPath);
-    if (stat.isFile()) {
-      const modifiedContent = processFile(fullPath);
-      const targetPath = path.join(targetDir, file);
-      fs.writeFileSync(targetPath, modifiedContent);
+function processDirectory(source, target) {
+  fs.readdirSync(source).forEach(file => {
+    const sourcePath = path.join(source, file);
+    const targetPath = path.join(target, file);
+    const stat = fs.statSync(sourcePath);
+    if (stat.isDirectory()) {
+      if (!fs.existsSync(targetPath)) {
+        fs.mkdirSync(targetPath);
+      }
+      processDirectory(sourcePath, targetPath);
+    } else if (stat.isFile()) {
+      processFile(sourcePath, targetPath);
     }
   });
 }
 
-processDirectory(sourceDir);
+processDirectory(sourceDir, targetDir);

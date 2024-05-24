@@ -62,14 +62,6 @@ function cleanHtmlAttributes(htmlContent) {
   return $.html();
 }
 
-function removeComments(content) {
-  // Remove single-line comments
-  content = content.replace(/\/\/.*$/gm, '');
-  // Remove multi-line comments
-  content = content.replace(/\/\*[\s\S]*?\*\//g, '');
-  return content;
-}
-
 function cleanCssContent(cssContent) {
   cssContent = removeComments(cssContent);
   cssContent = cssContent.replace(/@font-face\s*{[^}]*}/g, '');

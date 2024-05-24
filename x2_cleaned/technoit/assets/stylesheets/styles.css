@@ -1,6 +1,13 @@
+/*------------------------------------------------------------
+    Template name    : Technoit - IT Solutions & Business Services Multipurpose Responsive Website Template
+    Author           : ZRTHEMES
+    Version          : 2.0
+    File Description : Main css file of the template
+--------------------------------------------------------------*/
 
-
-
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
 
 :root {
   --font-default:
@@ -55,7 +62,7 @@
 }
 
 body {
-  
+  font-family: var(--font-default);
   color: var(--text-color);
   background: var(--theme-color);
   transition: 0.5s background ease;
@@ -109,7 +116,7 @@ h3,
 h4,
 h5,
 h6 {
-  
+  font-family: var(--font-primary);
 }
 
 .toggle-container {
@@ -148,7 +155,9 @@ h6 {
   display: block;
 }
 
-
+/*--------------------------------------------------------------
+# Sections & Section Header
+--------------------------------------------------------------*/
 section {
   padding: 60px 0;
   overflow: hidden;
@@ -195,7 +204,7 @@ img:hover {
 }
 
 .fill-btn{
-  
+  font-family: var(--font-primary);
   font-weight: 500;
   font-size: 15px;
   letter-spacing: 1px;
@@ -211,7 +220,9 @@ img:hover {
 
 .fill-btn:hover {background: linear-gradient(45deg, var(--color-secondary), var(--color-primary));color: var(--text-white-color);}
 
-
+/*--------------------------------------------------------------
+# Breadcrumbs
+--------------------------------------------------------------*/
 .breadcrumbs .page-header {
   padding: 120px 0 60px 0;
   min-height: 20vh;
@@ -278,7 +289,9 @@ img:hover {
   content: "/";
 }
 
-
+/*--------------------------------------------------------------
+# Scroll top button
+--------------------------------------------------------------*/
 .scroll-top {
   position: fixed;
   visibility: hidden;
@@ -310,7 +323,9 @@ img:hover {
   bottom: 15px;
 }
 
-
+/*--------------------------------------------------------------
+# Preloader
+--------------------------------------------------------------*/
 #preloader {
   position: fixed;
   inset: 0;
@@ -354,7 +369,9 @@ img:hover {
   }
 }
 
-
+/*--------------------------------------------------------------
+# Disable aos animation delay on mobile devices
+--------------------------------------------------------------*/
 @media screen and (max-width: 768px) {
   [data-aos-delay] {
     transition-delay: 0 !important;
@@ -364,7 +381,9 @@ img:hover {
   }
 }
 
-
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
 .topbar {
   background: #00796b;
   height: 40px;
@@ -446,7 +465,7 @@ img:hover {
   margin: 0;
   letter-spacing: 0.8px;
   color: var(--color-primary);
-  
+  font-family: var(--font-primary);
 }
 
 .header .logo h1 span {
@@ -459,7 +478,9 @@ img:hover {
 
 section {background: var(--light-color);}
 
-
+/*--------------------------------------------------------------
+# Desktop Navigation
+--------------------------------------------------------------*/
 @media (min-width: 1280px) {
   .navbar {
     padding: 0;
@@ -487,7 +508,7 @@ section {background: var(--light-color);}
     display: flex;
     align-items: center;
     justify-content: space-between;
-    
+    font-family: var(--font-secondary);
     font-size: 16px;
     font-weight: 600;
     color: var(--menu-color);
@@ -596,7 +617,9 @@ section {background: var(--light-color);}
   }
 }
 
-
+/*--------------------------------------------------------------
+# Mobile Navigation
+--------------------------------------------------------------*/
 @media (max-width: 1279px) {
   .navbar {
     position: fixed;
@@ -626,7 +649,7 @@ section {background: var(--light-color);}
     align-items: center;
     justify-content: space-between;
     padding: 10px 20px;
-    
+    font-family: var(--font-primary);
     font-size: 15px;
     color: rgb(255 255 255);
     white-space: nowrap;
@@ -716,7 +739,9 @@ section {background: var(--light-color);}
   }
 }
 
-
+/*--------------------------------------------------------------
+# Featured Section
+--------------------------------------------------------------*/
 
 .left {
   text-align: right;
@@ -768,11 +793,13 @@ section {background: var(--light-color);}
   opacity: 0.9;
 }
 
-
+/*--------------------------------------------------------------
+# About Us Section
+--------------------------------------------------------------*/
 .about h3 {
   font-size: 28px;
   margin-bottom: 20px;
-  
+  font-family: var(--font-secondary);
 }
 
 .about .call-us {
@@ -968,7 +995,9 @@ section {background: var(--light-color);}
   width: calc(100% - 10px);
 }
 
-
+/*--------------------------------------------------------------
+# Clients Section
+--------------------------------------------------------------*/
 .clients {
   padding: 90px 0;
 }
@@ -1006,7 +1035,9 @@ section {background: var(--light-color);}
 }
 
 
-
+/*--------------------------------------------------------------
+# Call To Action Section
+--------------------------------------------------------------*/
 .call-to-action {
   background: url(../images/hero-bg.png) center left;
   background-size: cover;
@@ -1100,7 +1131,7 @@ section {background: var(--light-color);}
 }
 
 .call-to-action .cta-btn {
-  
+  font-family: var(--font-primary);
   font-weight: 500;
   font-size: 16px;
   letter-spacing: 1px;
@@ -1130,7 +1161,9 @@ section {background: var(--light-color);}
 }
 
 
-
+/*--------------------------------------------------------------
+# Testimonials Section
+--------------------------------------------------------------*/
 .testimonials .testimonial-wrap {
   padding-left: 10px;
 }
@@ -1238,7 +1271,9 @@ section {background: var(--light-color);}
 }
 
 
-
+/*--------------------------------------------------------------
+# Our Team Section
+--------------------------------------------------------------*/
 .team .member {
   text-align: center;
   border-radius: 10px;
@@ -1307,7 +1342,9 @@ section {background: var(--light-color);}
 }
 
 
-
+/*--------------------------------------------------------------
+# Frequently Asked Questions Section
+--------------------------------------------------------------*/
 .faq .content h3 {
   font-weight: 400;
   font-size: 34px;
@@ -1384,7 +1421,9 @@ section {background: var(--light-color);}
   color: var(--text-color);
 }
 
-
+/*--------------------------------------------------------------
+# Recent Blog Posts Section
+--------------------------------------------------------------*/
 .recent-posts article {
   background-color: var(--light-color);
   padding: 30px;
@@ -1447,7 +1486,9 @@ section {background: var(--light-color);}
 
 
 
-
+/*--------------------------------------------------------------
+# Hero Section
+--------------------------------------------------------------*/
 .hero {
   width: 100%;
   position: relative;
@@ -1491,7 +1532,7 @@ section {background: var(--light-color);}
   margin-bottom: 15px;
   display: flex;
   align-items: center;
-  
+  /* justify-content: space-around; */
   gap: 10px;
 }
 
@@ -1540,7 +1581,7 @@ section {background: var(--light-color);}
 }
 
 .btn-get-started {
-  
+  font-family: var(--font-primary);
   font-weight: 500;
   font-size: 15px;
   letter-spacing: 1px;
@@ -1664,7 +1705,9 @@ section {background: var(--light-color);}
 
 .icon-box:hover {transform: scale(1.04);}
 
-
+/*--------------------------------------------------------------
+# Blog
+--------------------------------------------------------------*/
 .blog .blog-pagination {
   margin-top: 30px;
   color: #555555;
@@ -1710,7 +1753,9 @@ section {background: var(--light-color);}
 
 .blog-sidbar ul li a:hover{color: rgb(74 74 74);}
 
-
+/*--------------------------------------------------------------
+# Blog Posts List
+--------------------------------------------------------------*/
 .blog .posts-list article {
   box-shadow: 0 1px 6px rgb(0 0 0 / 10%);
   padding: 30px;
@@ -1764,7 +1809,9 @@ section {background: var(--light-color);}
   margin-bottom: 0;
 }
 
-
+/*--------------------------------------------------------------
+# Blog Details
+--------------------------------------------------------------*/
 .blog .blog-details {
   box-shadow: 0 1px 6px rgb(0 0 0 / 10%);
   padding: 30px;
@@ -1947,7 +1994,9 @@ section {background: var(--light-color);}
   margin-bottom: 0;
 }
 
-
+/*--------------------------------------------------------------
+# Blog Sidebar
+--------------------------------------------------------------*/
 dl, ol, ul {
     padding: 0;
     margin: 0;
@@ -2149,7 +2198,9 @@ dl, ol, ul {
   font-size: 14px;
 }
 
-
+/*--------------------------------------------------------------
+# Blog Comments
+--------------------------------------------------------------*/
 .blog .comments {
   margin-top: 30px;
 }
@@ -2260,7 +2311,9 @@ dl, ol, ul {
 }
 
 
-
+/*--------------------------------------------------------------
+# Stats Counter Section
+--------------------------------------------------------------*/
 
 .stats-counter .stats-item .purecounter {
   padding-right: 0;
@@ -2283,7 +2336,7 @@ dl, ol, ul {
 
 .stats-counter .stats-item p {
   margin: 0;
-  
+  font-family: var(--font-primary);
   font-size: 14px;
   display: flex;
   flex-direction: column;
@@ -2291,7 +2344,9 @@ dl, ol, ul {
 }
 
 
-
+/*--------------------------------------------------------------
+# Portfolio Section
+--------------------------------------------------------------*/
 .portfolio .portfolio-flters {
   padding: 0 0 40px 0;
   margin: 0 auto;
@@ -2396,7 +2451,9 @@ dl, ol, ul {
   transform: scale(1.1);
 }
 
-
+/*--------------------------------------------------------------
+# Pricing
+--------------------------------------------------------------*/
 .card {
     position: relative;
     height: auto;
@@ -2433,12 +2490,12 @@ dl, ol, ul {
 
 .col-sm-3:nth-child(1) .card,
 .col-sm-3:nth-child(1) .card .title .fa {
-    
+    /* background: linear-gradient(-45deg, var(--color-primary), #ec9f00); */
 }
 
 .col-sm-3:nth-child(2) .card,
 .col-sm-4:nth-child(2) .card .title .fa {
-    
+    /* background: linear-gradient(-45deg, var(--color-primary), #ec9f00); */
 }
 
 .col-sm-3:nth-child(3) .card,
@@ -2545,7 +2602,9 @@ dl, ol, ul {
     background: linear-gradient(45deg, var(--color-secondary), var(--color-primary));
 }
 
-
+/*--------------------------------------------------------------
+# Blog Posts List
+--------------------------------------------------------------*/
 .blog .posts-list article {
   box-shadow: 0 1px 6px rgb(0 0 0 / 10%);
   padding: 30px;
@@ -2597,7 +2656,9 @@ dl, ol, ul {
   margin-bottom: 0;
 }
 
-
+/*--------------------------------------------------------------
+# Blog Details
+--------------------------------------------------------------*/
 .blog .blog-details {
   box-shadow: 0 1px 6px rgb(0 0 0 / 10%);
   padding: 30px;
@@ -2778,7 +2839,9 @@ dl, ol, ul {
   margin-bottom: 0;
 }
 
-
+/*--------------------------------------------------------------
+# Blog Sidebar
+--------------------------------------------------------------*/
 .blog .sidebar {
   padding: 30px;
   box-shadow: 0 1px 6px rgb(0 0 0 / 10%);
@@ -2932,7 +2995,9 @@ dl, ol, ul {
   font-size: 14px;
 }
 
-
+/*--------------------------------------------------------------
+# Blog Comments
+--------------------------------------------------------------*/
 .blog .comments {
   margin-top: 30px;
 }
@@ -3043,7 +3108,9 @@ dl, ol, ul {
 }
 
 
-
+/**************************************
+  Contact
+ **************************************/
  .contact-section .contact-form-3 form .form-control {
   font-size: 15px;
   width: 100%;
@@ -3132,7 +3199,7 @@ dl, ol, ul {
   margin: 0;
 }
 .contact-form button[type=submit]{
-  
+  font-family: var(--font-primary);
   font-weight: 500;
   font-size: 15px;
   letter-spacing: 1px;
@@ -3199,7 +3266,9 @@ dl, ol, ul {
 }
 
 
-
+/*--------------------------------------------------------------
+# Particles
+--------------------------------------------------------------*/
 #particles-js {
   position: absolute;
   z-index: 0;
@@ -3226,7 +3295,7 @@ canvas{
   text-indent: 4px;
   line-height: 14px;
   padding-bottom: 2px;
-  
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: bold;
 }
 
@@ -3252,7 +3321,9 @@ canvas{
 
 
 
-
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
 
 
 .footer-section {
@@ -3348,7 +3419,7 @@ canvas{
   color: var(--color-primary);
   display: block;
   font-size: 20px;
-  
+  font-family: 'Poppins', sans-serif;
   margin-bottom: 20px;
 }
 

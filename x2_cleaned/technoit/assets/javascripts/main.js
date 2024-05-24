@@ -1,11 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
   "use strict";
 
-  
+  /*  
+    Template name    : Technoit - IT Solutions & Business Services Multipurpose Responsive Website Template
+    Author           : ZRTHEMES
+    Version          : 1.0
+    File Description : Main JS file of the template
+  */
 
   
 
-  
+  /**
+   * Initiate Pure Counter
+   */
   new PureCounter();
 
   const darkModeButton = document.getElementById('darkmode-button');
@@ -24,7 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  
+  /**
+   * Sticky Header on Scroll
+   */
   const selectHeader = document.querySelector('#header');
   if (selectHeader) {
     let headerOffset = selectHeader.offsetTop;
@@ -55,7 +64,9 @@ document.addEventListener('DOMContentLoaded', () => {
       behavior: 'smooth'
     }));
   }
-  
+  /**
+   * Navbar links active state on scroll
+   */
   let navbarlinks = document.querySelectorAll('#navbar a');
 
   function navbarlinksActive() {
@@ -78,7 +89,9 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('load', navbarlinksActive);
   document.addEventListener('scroll', navbarlinksActive);
 
-  
+  /**
+   * Mobile nav toggle
+   */
   const mobileNavShow = document.querySelector('.mobile-nav-show');
   const mobileNavHide = document.querySelector('.mobile-nav-hide');
 
@@ -95,7 +108,9 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileNavHide.classList.toggle('d-none');
   }
 
-  
+  /**
+   * Hide mobile nav on same-page/hash links
+   */
   document.querySelectorAll('#navbar a').forEach(navbarlink => {
 
     if (!navbarlink.hash) return;
@@ -111,7 +126,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   });
 
-  
+  /**
+   * Toggle mobile nav dropdowns
+   */
   const navDropdowns = document.querySelectorAll('.navbar .dropdown > a');
 
   navDropdowns.forEach(el => {
@@ -128,13 +145,17 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   });
 
-  
+  /**
+   * Initiate glightbox
+   */
   const glightbox = GLightbox({
     selector: '.glightbox'
   });
   
 
-  
+  /**
+   * Porfolio isotope and filter
+   */
   let portfolionIsotope = document.querySelector('.portfolio-isotope');
 
   if (portfolionIsotope) {
@@ -169,7 +190,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   }
 
-  
+  /**
+   * Scroll top button
+   */
   const scrollTop = document.querySelector('.scroll-top');
   if (scrollTop) {
     const togglescrollTop = function() {
@@ -183,7 +206,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }));
   }
 
-  
+  /**
+   * Clients Slider
+   */
   new Swiper('.clients-slider', {
     speed: 400,
     loop: true,
@@ -217,7 +242,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  
+  /**
+   * Init swiper slider with 1 slide at once in desktop view
+   */
   new Swiper('.slides-1', {
     speed: 600,
     loop: true,
@@ -238,7 +265,9 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  
+  /**
+   * Init swiper slider with 3 slides at once in desktop view
+   */
   new Swiper('.slides-3', {
     speed: 600,
     loop: true,
@@ -270,7 +299,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   
 
-  
+  /**
+   * Animation on scroll function and init
+   */
   function aos_init() {
     AOS.init({
       duration: 1000,
@@ -284,7 +315,9 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  
+  /**
+   * Preloader
+   */
   const preloader = document.querySelector('#preloader');
   if (preloader) {
     window.addEventListener('load', () => {

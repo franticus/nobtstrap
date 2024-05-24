@@ -97,6 +97,28 @@ function processFile(filePath, targetPath) {
   fs.writeFileSync(targetPath, modifiedContent);
 }
 
+function appendMainContentToIndex(htmlContent) {
+  const indexPath = path.join(sourceDir, 'index.html');
+  if (!fs.existsSync(indexPath)) {
+    console.error('index.html not found.');
+    return;
+  }
+
+  const mainContent = cheerio.load(htmlContent)('main').html();
+  if (mainContent) {
+    const indexHtml = fs.readFileSync(indexPath, 'utf8');
+    const $ = cheerio.load(indexHtml);
+    $('main').append(mainContent);
+    fs.writeFileSync(indexPath, $.html());
+  }
+}
+
+function processHtmlFile(filePath) {
+  const htmlContent = fs.readFileSync(filePath, 'utf8');
+  appendMainContentToIndex(htmlContent);
+  fs.unlinkSync(filePath); // Delete the processed file
+}
+
 function processDirectory(source, target) {
   fs.readdirSync(source).forEach(file => {
     const sourcePath = path.join(source, file);
@@ -108,7 +130,15 @@ function processDirectory(source, target) {
       }
       processDirectory(sourcePath, targetPath);
     } else if (stat.isFile()) {
-      processFile(sourcePath, targetPath);
+      if (file.endsWith('.html')) {
+        if (file !== 'index.html') {
+          processHtmlFile(sourcePath);
+        } else {
+          processFile(sourcePath, targetPath);
+        }
+      } else {
+        processFile(sourcePath, targetPath);
+      }
     }
   });
 }

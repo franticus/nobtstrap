@@ -98,7 +98,7 @@ function processFile(filePath, targetPath) {
 }
 
 function appendMainContentToIndex(htmlContent) {
-  const indexPath = path.join(sourceDir, 'index.html');
+  const indexPath = path.join(targetDir, 'index.html');
   if (!fs.existsSync(indexPath)) {
     console.error('index.html not found.');
     return;
@@ -113,13 +113,13 @@ function appendMainContentToIndex(htmlContent) {
   }
 }
 
-function processHtmlFile(filePath) {
+function processHtmlFile(filePath, targetPath) {
   const htmlContent = fs.readFileSync(filePath, 'utf8');
   appendMainContentToIndex(htmlContent);
-  fs.unlinkSync(filePath); // Delete the processed file
+  fs.unlinkSync(targetPath); // Delete the processed file in the target directory
 }
 
-function processDirectory(source, target) {
+function copyDirectory(source, target) {
   fs.readdirSync(source).forEach(file => {
     const sourcePath = path.join(source, file);
     const targetPath = path.join(target, file);
@@ -128,19 +128,35 @@ function processDirectory(source, target) {
       if (!fs.existsSync(targetPath)) {
         fs.mkdirSync(targetPath);
       }
-      processDirectory(sourcePath, targetPath);
+      copyDirectory(sourcePath, targetPath);
+    } else if (stat.isFile()) {
+      fs.copyFileSync(sourcePath, targetPath);
+    }
+  });
+}
+
+function processDirectory(source, target) {
+  fs.readdirSync(target).forEach(file => {
+    const targetPath = path.join(target, file);
+    const stat = fs.statSync(targetPath);
+    if (stat.isDirectory()) {
+      processDirectory(source, targetPath);
     } else if (stat.isFile()) {
       if (file.endsWith('.html')) {
         if (file !== 'index.html') {
-          processHtmlFile(sourcePath);
+          processHtmlFile(targetPath, targetPath);
         } else {
-          processFile(sourcePath, targetPath);
+          processFile(targetPath, targetPath);
         }
       } else {
-        processFile(sourcePath, targetPath);
+        processFile(targetPath, targetPath);
       }
     }
   });
 }
 
+// Copy files from sourceDir to targetDir
+copyDirectory(sourceDir, targetDir);
+
+// Process the files in the targetDir
 processDirectory(sourceDir, targetDir);
